@@ -12,14 +12,12 @@ function f(filePath: string): Promise<string> {
 
 		const data = fs.readFileSync(filePath);
 
-		const temp = Buffer.from(data).toString('base64');
+		const temp = new Buffer(data).toString('base64');
 
 		resolve('data:' + fileMimeType + ';base64,' + temp);
 
 	});
 
 }
-
-f('./assets/cat.jpg').then(data => console.log(data));
 
 export default f;
